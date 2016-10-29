@@ -102,5 +102,5 @@ func TimeKey(key []byte, tp int64) []byte {
 func RandID(len int) string {
 	buf := make([]byte, len, len)
 	rand.Read(buf)
-	return base64.StdEncoding.EncodeToString(buf)
+	return base64.URLEncoding.EncodeToString(buf)
 }
