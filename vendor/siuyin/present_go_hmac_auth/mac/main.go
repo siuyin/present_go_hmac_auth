@@ -10,6 +10,7 @@ import (
 	"crypto/hmac"
 	"crypto/rand"
 	"crypto/sha256"
+	"encoding/base32"
 	"encoding/base64"
 	"encoding/binary"
 	"net/url"
@@ -102,5 +103,5 @@ func TimeKey(key []byte, tp int64) []byte {
 func RandID(len int) string {
 	buf := make([]byte, len, len)
 	rand.Read(buf)
-	return base64.URLEncoding.EncodeToString(buf)
+	return base32.StdEncoding.EncodeToString(buf)
 }

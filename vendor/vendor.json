@@ -3,10 +3,10 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "GiiTLj1kqWsrCFs9oer6qzagk5g=",
+			"checksumSHA1": "61TDVcF9R4pHZIEBUV7tPaPNhJo=",
 			"path": "siuyin/present_go_hmac_auth/mac",
-			"revision": "8af4cb6f8c7ab1853bbe51395a839f2f124bc80c",
-			"revisionTime": "2016-10-29T01:28:32Z"
+			"revision": "724eee795fa51ae7b3ac4ae1b8b41507541ea297",
+			"revisionTime": "2016-10-29T01:36:27Z"
 		}
 	],
 	"rootPath": "siuyin/present_go_hmac_auth"
