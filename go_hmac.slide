@@ -1,0 +1,61 @@
+Using Keyed-Hash Message Authentication Code (HMAC)
+with Go to authenticate service requests
+28 Oct 2016
+
+Loh Siu Yin
+Technology Consultant, Beyond Broadcast LLP
+siuyin@beyondbroadcast.com
+
+* Keyed-Hash Message Authentication Code
+Basic idea
+
+- Sender and Receiver have a shared secret
+- Sender sends Message and a HMAC based on the Secret
+- Receiver recomputes HMAC based on Message and checks for HMACs match
+
+* Simple Example
+package mac:
+.code mac/main.go /005 OMIT/,/006 OMIT/
+.code mac/main.go /010 OMIT/,/020 OMIT/
+
+eg/simple:
+.play -edit eg/simple/main.go /010 OMIT/,/020 OMIT/
+
+* CheckMAC function
+package mac:
+.code mac/main.go /030 OMIT/,/040 OMIT/
+
+eg/simple2:
+.play -edit eg/simple2/main.go /010/,/020/
+
+* Authenticating GET requests
+eg/web:
+.play -edit eg/web/main.go /010/,/020/
+
+demo:
+
+ localhost:8123/a/b?c=cat&d=dog&hmac=deadbeef
+ localhost:8123/a/b?c=cat&d=dog&hmac=dMmTBpkMI-IpzJtcHnxYgeH8OB0hr3yDc39eyyFGxNc=
+
+* Checking URL Values
+package mac:
+.code -numbers mac/main.go /050/,/060/
+.code -numbers mac/main.go /110/,/120/
+
+* Authenticating GET Client
+.play -edit -numbers eg/web/client/main.go /010/,/020/
+
+HMAC can defeat man-in-the-middle attacks but not replay attacks.
+
+* Timebased HMAC -- defeating replay attacks
+.play -edit time/main.go /010/,/020/
+
+Set time period's time step to tolerate clock skew betwen client and server.
+
+* Time based Server
+eg/web2:
+.play -edit eg/web2/main.go /010/,/020/
+
+* Time based Client
+eg/web2/client:
+.play -edit eg/web2/client/main.go /010/,/020/

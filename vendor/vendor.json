@@ -1,0 +1,12 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "ABCcz2Sm2ZqfuOLj2TOQrFT13g0=",
+			"path": "siuyin/present_go_hmac_auth/mac",
+			"revision": ""
+		}
+	],
+	"rootPath": "siuyin/present_go_hmac_auth"
+}
