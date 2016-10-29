@@ -8,6 +8,7 @@ package mac
 import (
 	"bytes"
 	"crypto/hmac"
+	"crypto/rand"
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/binary"
@@ -95,4 +96,11 @@ func TimeKey(key []byte, tp int64) []byte {
 	dst := make([]byte, 0, len(key)+len(t))
 	dst = append(key, t...)
 	return dst
+}
+
+// RandID returns a base64 encoded string of len random bytes.
+func RandID(len int) string {
+	buf := make([]byte, len, len)
+	rand.Read(buf)
+	return base64.StdEncoding.EncodeToString(buf)
 }
